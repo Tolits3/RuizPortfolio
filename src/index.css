@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* theme shortcut variables (Tailwind v4 supports theme() usage in shaders but for CSS we use vars) */
+:root{
+  --forest:#013220;
+  --forest-dark:#002417;
+  --gold:#D4AF37;
+  --gold-light:#FFDB58;
+}
+
+/* basic body to enforce full green background as fallback */
+html,body,#root { height:100%; }
+body {
+  background: var(--forest);
+  color: white;
+}
+
+/* small helper classes */
+.bg-forest { background: var(--forest); }
+.text-gold { color: var(--gold); }
+.border-gold { border-color: var(--gold); }
+
+/* animations used by components */
+@keyframes fade-in { from {opacity:0; transform:translateY(12px)} to {opacity:1; transform:none}}
+@keyframes slide-right { from {opacity:0; transform:translateX(-24px)} to {opacity:1; transform:none}}
+@keyframes glow { from { text-shadow:0 0 6px rgba(212,175,55,0.7)} to { text-shadow:0 0 26px rgba(255,219,88,0.9)} }
+
+.animate-fade-in { animation: fade-in .9s ease-out both; }
+.animate-slide-right { animation: slide-right .9s ease-out both; }
+.animate-glow { animation: glow 2s ease-in-out infinite alternate; }
