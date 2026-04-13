@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import About from "./components/About";
 import SparklesLayer from "./components/SparklesLayer";
 import Footer from "./components/Footer";
+import AmbientBlob from "./components/AmbientBlob";
 
 export default function App(){
   return (
@@ -13,6 +14,7 @@ export default function App(){
       <ShaderBg />
       <CursorTrail />
       <SparklesLayer />
+      <AmbientBlob />
 
       <Navbar />
       <main>
