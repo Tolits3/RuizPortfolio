@@ -8,7 +8,7 @@ const TECH_STACK = [
 ];
 
 const STATS = [
-  { value: '2+',  label: 'Years Coding'      },
+  { value: '3+',  label: 'Years Coding'      },
   { value: '01',  label: 'Live AI SaaS App'  },
   { value: '01',  label: 'Research Award'     },
   { value: 'CS',  label: 'Degree in Progress' },
