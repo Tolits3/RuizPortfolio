@@ -1,129 +1,177 @@
 import { useEffect, useState } from 'react';
 
-const TECH_STACK = [
-  'ReactJS','Python','JavaScript','TailwindCSS','Node.js','PostgreSQL',
-  'Firebase','Supabase','Hugging Face API','RESTful API','Git','Claude AI',
-  'ReactJS','Python','JavaScript','TailwindCSS','Node.js','PostgreSQL',
-  'Firebase','Supabase','Hugging Face API','RESTful API','Git','Claude AI',
+const ROW1 = [
+  'ReactJS','Python','PyTorch','JavaScript','TailwindCSS','FastAPI','Node.js',
+  'PostgreSQL','Firebase','Supabase','Hugging Face','Google Colab','Git','REST APIs',
+  'ReactJS','Python','PyTorch','JavaScript','TailwindCSS','FastAPI','Node.js',
+  'PostgreSQL','Firebase','Supabase','Hugging Face','Google Colab','Git','REST APIs',
+];
+const ROW2 = [
+  'Full-Stack Development','AI Integration','LoRA Training','SaaS Architecture',
+  'UI / UX Design','Database Engineering','API Design','Cloud Deployment',
+  'Data Automation','Research & Innovation','LLM Research','Systems Design',
+  'Full-Stack Development','AI Integration','LoRA Training','SaaS Architecture',
+  'UI / UX Design','Database Engineering','API Design','Cloud Deployment',
+  'Data Automation','Research & Innovation','LLM Research','Systems Design',
 ];
 
 const STATS = [
-  { value: '3+',  label: 'Years Coding'      },
-  { value: '01',  label: 'Live AI SaaS App'  },
-  { value: '01',  label: 'Research Award'     },
-  { value: 'CS',  label: 'Degree in Progress' },
+  { value:'3+', label:'Years of Experience'   },
+  { value:'02', label:'Shipped Projects'       },
+  { value:'01', label:'Research Award'         },
+  { value:'CS', label:'Degree in Progress'     },
 ];
 
+const C = {
+  bg:'#0C0B08', gold:'#C9956D', goldLt:'#DEB896',
+  cream:'#F5F2ED', muted:'rgba(245,242,237,0.55)',
+  border:'rgba(201,149,109,0.14)',
+};
+
 export default function Hero() {
-  const [mouse,  setMouse]  = useState({ x: 0, y: 0 });
+  const [mouse,  setMouse]  = useState({ x:0, y:0 });
   const [loaded, setLoaded] = useState(false);
+
+  const nameChars = "Lolito S. Ruiz JR.".split('');
+  const charCount = nameChars.length;
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 80);
     const onMove = (e) => setMouse({
-      x: (e.clientX / window.innerWidth  - 0.5) * 30,
-      y: (e.clientY / window.innerHeight - 0.5) * 30,
+      x:(e.clientX/window.innerWidth  -0.5)*24,
+      y:(e.clientY/window.innerHeight -0.5)*24,
     });
     window.addEventListener('mousemove', onMove);
     return () => { clearTimeout(t); window.removeEventListener('mousemove', onMove); };
   }, []);
 
   return (
-    <section
-      id="home"
-      style={{ minHeight:'100vh', background:'#071a07', position:'relative', overflow:'hidden', display:'flex', flexDirection:'column', zIndex:2 }}
-    >
+    <section id="home" style={{ minHeight:'100vh', background:C.bg, position:'relative', overflow:'hidden', display:'flex', flexDirection:'column', zIndex:2 }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
 
-        .hero-name span{display:block;font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,13vw,170px);line-height:0.88;letter-spacing:-0.01em;text-transform:uppercase;opacity:0;transform:translateY(50px);transition:opacity 0.7s ease,transform 0.7s ease;}
-        .hero-name.loaded span{opacity:1;transform:translateY(0);}
-        .hero-name span:nth-child(1){color:#ffffff;transition-delay:0.05s;}
-        .hero-name span:nth-child(2){color:#D4AF37;transition-delay:0.15s;}
-        .hero-name span:nth-child(3){color:#ffffff;transition-delay:0.25s;}
-        .hero-sub{opacity:0;transform:translateY(20px);transition:opacity 0.7s 0.5s ease,transform 0.7s 0.5s ease;}
-        .hero-sub.loaded{opacity:1;transform:translateY(0);}
-        .cta-p{background:#D4AF37;color:#071a07;padding:15px 44px;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;display:inline-block;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:background 0.2s,transform 0.15s;font-family:'Inter',sans-serif;}
-        .cta-p:hover{background:#f0cc58;transform:scale(1.03);}
-        .cta-s{border:1px solid rgba(212,175,55,0.45);color:#D4AF37;padding:15px 44px;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color 0.2s,background 0.2s;font-family:'Inter',sans-serif;}
-        .cta-s:hover{border-color:#D4AF37;background:rgba(212,175,55,0.07);}
-        @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-        .marquee-track{animation:marquee 24s linear infinite;}
-        .marquee-track:hover{animation-play-state:paused;}
-        .stat-card{border-right:1px solid rgba(212,175,55,0.12);}
-        .stat-card:last-child{border-right:none;}
-        .speed-lines{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-        .speed-lines::before{content:'';position:absolute;top:-30%;right:-5%;width:55%;height:130%;background:linear-gradient(165deg,rgba(212,175,55,0.04) 0%,transparent 60%);transform:skewX(-8deg);}
-        .speed-lines::after{content:'';position:absolute;top:0;right:0;width:38%;height:100%;border-left:1px solid rgba(212,175,55,0.08);transform:skewX(-8deg) translateX(60px);}
-        @media(max-width:768px){.hero-img-col{display:none!important;}.hero-stats{grid-template-columns:repeat(2,1fr)!important;}}
+        .hn span{display:block;font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,12vw,160px);line-height:.86;letter-spacing:-.01em;text-transform:uppercase;opacity:0;transform:translateY(60px);transition:opacity .8s ease,transform .8s ease;}
+        .hn.go span{opacity:1;transform:translateY(0);}
+        .hn span:nth-child(1){color:${C.cream};transition-delay:.06s;}
+        .hn span:nth-child(2){color:${C.gold}; transition-delay:.16s;}
+        .hn span:nth-child(3){color:${C.cream};transition-delay:.26s;}
+        
+        .name-char{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,12vw,160px);line-height:.86;letter-spacing:-.01em;text-transform:uppercase;opacity:0;transform:translateY(60px) scale(0.8);animation:charReveal .6s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+        @keyframes charReveal{0%{opacity:0;transform:translateY(60px) scale(0.8)}100%{opacity:1;transform:translateY(0) scale(1)}}
+        
+        .hs{opacity:0;transform:translateY(24px);transition:opacity .8s .52s ease,transform .8s .52s ease;}
+        .hs.go{opacity:1;transform:translateY(0);}
+
+        .btn-p{background:${C.gold};color:${C.bg};padding:14px 44px;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;font-family:'Inter',sans-serif;clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,13px 100%,0 calc(100% - 13px));transition:background .2s,transform .15s;}
+        .btn-p:hover{background:${C.goldLt};transform:scale(1.03);}
+        .btn-s{border:1px solid rgba(201,168,76,.4);color:${C.gold};padding:14px 44px;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;font-family:'Inter',sans-serif;transition:border-color .2s,background .2s;}
+        .btn-s:hover{border-color:${C.gold};background:rgba(201,168,76,.07);}
+
+        @keyframes imgFloat {0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)}}
+        @keyframes haloSpin {from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+        @keyframes lightPass{0%,100%{filter:brightness(.9) contrast(1.06)} 50%{filter:brightness(1.02) contrast(1.02)}}
+
+        .pfloat{animation:imgFloat 6s ease-in-out infinite;position:relative;}
+        .pglow{position:absolute;inset:-40px;background:conic-gradient(from 0deg,rgba(201,168,76,.35),transparent 38%,rgba(201,168,76,.18) 62%,transparent 80%,rgba(201,168,76,.35));animation:haloSpin 10s linear infinite;filter:blur(22px);border-radius:50%;z-index:0;pointer-events:none;}
+        .pframe{position:absolute;bottom:-18px;right:-18px;width:78%;height:78%;border:1.5px solid rgba(201,168,76,.45);clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,0 100%);z-index:0;}
+        .pimg{animation:lightPass 7s ease-in-out infinite;position:relative;z-index:1;display:block;width:clamp(200px,21vw,340px);height:clamp(200px,21vw,340px);object-fit:cover;object-position:top;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);}
+
+        @keyframes mL{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+        @keyframes mR{from{transform:translateX(-50%)} to{transform:translateX(0)}}
+        .tl{animation:mL 26s linear infinite;display:flex;gap:3rem;width:max-content;}
+        .tr{animation:mR 30s linear infinite;display:flex;gap:3rem;width:max-content;}
+        .tl:hover,.tr:hover{animation-play-state:paused;}
+        .mq{position:relative;overflow:hidden;}
+        .mq::before{content:'';position:absolute;top:0;bottom:0;left:0;width:100px;background:linear-gradient(to right,${C.bg},transparent);z-index:2;pointer-events:none;}
+        .mq::after{content:'';position:absolute;top:0;bottom:0;right:0;width:100px;background:linear-gradient(to left,${C.bg},transparent);z-index:2;pointer-events:none;}
+
+        .stat{border-right:1px solid ${C.border};transition:background .3s;}
+        .stat:last-child{border-right:none;}
+        .stat:hover{background:rgba(201,168,76,.04);}
+        .spd{position:absolute;inset:0;pointer-events:none;}
+        .spd::before{content:'';position:absolute;top:-30%;right:-5%;width:52%;height:130%;background:linear-gradient(165deg,rgba(201,168,76,.035) 0%,transparent 58%);transform:skewX(-8deg);}
+        .spd::after{content:'';position:absolute;top:0;right:0;width:36%;height:100%;border-left:1px solid rgba(201,168,76,.06);transform:skewX(-8deg) translateX(55px);}
+
+        @media(max-width:768px){.photo-col{display:none!important;}.srow{grid-template-columns:repeat(2,1fr)!important;}}
       `}</style>
 
-      <div className="speed-lines" />
+      <div className="spd" />
 
       <div style={{ paddingTop:'110px', paddingLeft:'clamp(24px,6vw,96px)', paddingRight:'clamp(24px,6vw,96px)', flex:1 }}>
 
         {/* Label */}
-        <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:'1.4rem' }}>
-          <span style={{ width:48, height:2, background:'#D4AF37', flexShrink:0 }} />
-          <span style={{ color:'#D4AF37', fontSize:12, letterSpacing:'0.22em', fontWeight:600, fontFamily:'Inter,sans-serif', textTransform:'uppercase' }}>
-            Full-Stack Developer · Philippines
+        <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:'1.5rem' }}>
+          <span style={{ width:44, height:1.5, background:C.gold, flexShrink:0, opacity:.8 }} />
+          <span style={{ color:C.gold, fontSize:11, letterSpacing:'.22em', fontWeight:600, fontFamily:'Inter,sans-serif', textTransform:'uppercase', opacity:.85 }}>
+            Full-Stack Web Developer · Philippines
           </span>
         </div>
 
-        {/* Name + Image */}
-        <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', gap:32 }}>
+        <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', gap:40 }}>
 
+          {/* Name */}
           <div style={{ flex:1 }}>
-            <h1 className={`hero-name${loaded?' loaded':''}`}>
-              <span>Lolito</span>
-              <span>S. Ruiz</span>
-              <span>JR.</span>
+            <h1 style={{ margin:0, fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(68px,12vw,160px)", lineHeight:.86, letterSpacing:"-.01em", textTransform:"uppercase", display:'flex', flexWrap:'wrap', gap:'0.05em' }}>
+              {loaded && nameChars.map((char, idx) => {
+                const colors = ['#F5F2ED', '#C9956D', '#F5F2ED'];
+                const colorIdx = idx % 3;
+                return (
+                  <span key={idx} className="name-char" style={{ color: colors[colorIdx], animationDelay: `${idx * 0.06}s` }}>
+                    {char}
+                  </span>
+                );
+              })}
             </h1>
 
-            <div className={`hero-sub${loaded?' loaded':''}`} style={{ marginTop:'2rem' }}>
-              <p style={{ color:'rgba(255,255,255,0.6)', fontSize:17, maxWidth:460, lineHeight:1.75, fontFamily:'Inter,sans-serif', marginBottom:'2rem' }}>
-                Crafting next-generation digital experiences powered by innovation,
-                precision, and relentless imagination.
+            <div className={`hs${loaded?' go':''}`} style={{ marginTop:'2.2rem' }}>
+              <p style={{ color:C.muted, fontSize:16, maxWidth:480, lineHeight:1.82, fontFamily:'Inter,sans-serif', fontWeight:300, marginBottom:'2.2rem' }}>
+                Building full-stack web applications and AI-powered systems that solve real problems — from scalable SaaS platforms to intelligent data automation tools.
               </p>
-              <div style={{ display:'flex', gap:16, flexWrap:'wrap' }}>
-                <a href="#projects" className="cta-p">View Projects</a>
-                <a href="#about"    className="cta-s">About Me →</a>
+              <div style={{ display:'flex', gap:14, flexWrap:'wrap' }}>
+                <a href="#projects" className="btn-p">View Projects</a>
+                <a href="#about"    className="btn-s">About Me →</a>
               </div>
             </div>
           </div>
 
-          {/* Profile image */}
+          {/* Animated photo */}
           <div
-            className="hero-img-col"
-            style={{ flexShrink:0, position:'relative', marginTop:'1rem' }}
+            className="photo-col"
+            style={{ flexShrink:0, marginTop:'0.5rem', transform:`translate(${mouse.x*.35}px,${mouse.y*.35}px)`, transition:'transform .3s ease' }}
           >
-            <div style={{ transform:`translate(${mouse.x*0.4}px,${mouse.y*0.4}px)`, position:'relative', transition:'transform 0.25s ease' }}>
-              <div style={{ position:'absolute', bottom:-18, right:-18, width:'75%', height:'75%', border:'2px solid #D4AF37', clipPath:'polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)', opacity:0.6 }} />
-              <img
-                src="/profile.jpg"
-                alt="Lolito S. Ruiz JR."
-                style={{ width:'clamp(200px,22vw,360px)', height:'clamp(200px,22vw,360px)', objectFit:'cover', objectPosition:'top', clipPath:'polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)', display:'block', filter:'brightness(0.95) contrast(1.05)' }}
-              />
+            <div className="pfloat">
+              <div className="pglow" />
+              <div className="pframe" />
+              <img src="/profile.jpg" alt="Lolito S. Ruiz JR." className="pimg" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Marquee */}
-      <div style={{ marginTop:'3.5rem', borderTop:'1px solid rgba(212,175,55,0.15)', borderBottom:'1px solid rgba(212,175,55,0.15)', background:'rgba(212,175,55,0.04)', padding:'13px 0', overflow:'hidden' }}>
-        <div className="marquee-track" style={{ display:'flex', gap:'3rem', width:'max-content' }}>
-          {TECH_STACK.map((tech,i)=>(
-            <span key={i} style={{ color:'#D4AF37', fontSize:12, letterSpacing:'0.18em', textTransform:'uppercase', fontWeight:600, fontFamily:'Inter,sans-serif', whiteSpace:'nowrap' }}>◆ {tech}</span>
-          ))}
+      {/* Dual marquee */}
+      <div style={{ marginTop:'3rem', borderTop:`1px solid ${C.border}`, borderBottom:`1px solid ${C.border}` }}>
+        <div className="mq" style={{ background:'rgba(201,168,76,.03)', padding:'11px 0', borderBottom:`1px solid ${C.border}` }}>
+          <div className="tl">
+            {ROW1.map((t,i)=>(
+              <span key={i} style={{ color:C.gold, fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', fontWeight:600, fontFamily:'Inter,sans-serif', whiteSpace:'nowrap', opacity:.85 }}>◆ {t}</span>
+            ))}
+          </div>
+        </div>
+        <div className="mq" style={{ background:'rgba(201,168,76,.015)', padding:'10px 0' }}>
+          <div className="tr">
+            {ROW2.map((t,i)=>(
+              <span key={i} style={{ color:`rgba(245,240,232,.32)`, fontSize:10, letterSpacing:'.2em', textTransform:'uppercase', fontWeight:400, fontFamily:'Inter,sans-serif', whiteSpace:'nowrap' }}>— {t}</span>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Stats */}
-      <div className="hero-stats" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', borderTop:'1px solid rgba(212,175,55,0.10)' }}>
+      <div className="srow" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', borderTop:`1px solid ${C.border}` }}>
         {STATS.map((s,i)=>(
-          <div key={i} className="stat-card" style={{ padding:'clamp(20px,3vw,36px) clamp(20px,4vw,48px)' }}>
-            <div style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:'clamp(42px,5vw,64px)', color:'#D4AF37', lineHeight:1 }}>{s.value}</div>
-            <div style={{ color:'rgba(255,255,255,0.4)', fontSize:11, letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'Inter,sans-serif', marginTop:8 }}>{s.label}</div>
+          <div key={i} className="stat" style={{ padding:'clamp(18px,2.8vw,34px) clamp(18px,3.5vw,44px)' }}>
+            <div style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:'clamp(40px,5vw,60px)', color:C.gold, lineHeight:1 }}>{s.value}</div>
+            <div style={{ color:'rgba(245,240,232,.38)', fontSize:10, letterSpacing:'.14em', textTransform:'uppercase', fontFamily:'Inter,sans-serif', marginTop:7, fontWeight:500 }}>{s.label}</div>
           </div>
         ))}
       </div>

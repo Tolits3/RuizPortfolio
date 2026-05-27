@@ -43,7 +43,7 @@ export default function Navbar() {
       href={`#${id}`}
       onClick={() => setMenuOpen(false)}
       style={{
-        color:         active === id ? "#D4AF37" : "rgba(255,255,255,0.55)",
+        color:         active === id ? "#C9956D" : "rgba(255,255,255,0.55)",
         fontSize:      12,
         fontFamily:    "Inter, sans-serif",
         fontWeight:    600,
@@ -65,7 +65,7 @@ export default function Navbar() {
         left:       0,
         width:      active === id ? "100%" : "0%",
         height:     1,
-        background: "#D4AF37",
+        background: "#C9956D",
         transition: "width 0.3s ease",
         display:    "block",
       }} />
@@ -95,10 +95,10 @@ export default function Navbar() {
           width:            "100%",
           zIndex:           9000,
           transition:       "background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease",
-          background:       scrolled ? "rgba(7,26,7,0.88)" : "transparent",
+          background:       scrolled ? "rgba(12,11,8,0.88)" : "transparent",
           backdropFilter:   scrolled ? "blur(12px)"        : "none",
           borderBottom:     scrolled
-            ? "1px solid rgba(212,175,55,0.15)"
+            ? "1px solid rgba(201,149,109,0.15)"
             : "1px solid transparent",
         }}
       >
@@ -119,7 +119,7 @@ export default function Navbar() {
               className="nav-logo"
               style={{
                 fontSize:      32,
-                color:         "#D4AF37",
+                color:         "#C9956D",
                 letterSpacing: "0.05em",
                 lineHeight:    1,
               }}
@@ -130,7 +130,7 @@ export default function Navbar() {
             <span style={{
               width:        5,
               height:       5,
-              background:   "#D4AF37",
+              background:   "#C9956D",
               transform:    "rotate(45deg)",
               margin:       "0 4px",
               opacity:      0.7,
@@ -140,7 +140,7 @@ export default function Navbar() {
               className="nav-logo"
               style={{
                 fontSize:      32,
-                color:         "#D4AF37",
+                color:         "#C9956D",
                 letterSpacing: "0.05em",
                 lineHeight:    1,
               }}
@@ -161,8 +161,8 @@ export default function Navbar() {
               href="mailto:your@email.com"
               style={{
                 background:    "transparent",
-                border:        "1px solid rgba(212,175,55,0.45)",
-                color:         "#D4AF37",
+                border:        "1px solid rgba(201,149,109,0.45)",
+                color:         "#C9956D",
                 padding:       "8px 20px",
                 fontSize:      11,
                 fontFamily:    "Inter, sans-serif",
@@ -174,12 +174,12 @@ export default function Navbar() {
                 transition:    "background 0.2s, border-color 0.2s",
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background    = "rgba(212,175,55,0.1)";
-                e.currentTarget.style.borderColor   = "#D4AF37";
+                e.currentTarget.style.background    = "rgba(201,149,109,0.1)";
+                e.currentTarget.style.borderColor   = "#C9956D";
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.background    = "transparent";
-                e.currentTarget.style.borderColor   = "rgba(212,175,55,0.45)";
+                e.currentTarget.style.borderColor   = "rgba(201,149,109,0.45)";
               }}
             >
               Hire Me
@@ -206,7 +206,7 @@ export default function Navbar() {
                 display:    "block",
                 width:      menuOpen ? (i === 1 ? 0 : 22) : 22,
                 height:     1.5,
-                background: "#D4AF37",
+                background: "#C9956D",
                 transition: "all 0.25s ease",
                 transformOrigin: "center",
                 transform:  menuOpen
@@ -224,8 +224,8 @@ export default function Navbar() {
           maxHeight:      menuOpen ? 300 : 0,
           overflow:       "hidden",
           transition:     "max-height 0.35s ease",
-          background:     "rgba(7,26,7,0.97)",
-          borderTop:      menuOpen ? "1px solid rgba(212,175,55,0.12)" : "none",
+          background:     "rgba(12,11,8,0.97)",
+          borderTop:      menuOpen ? "1px solid rgba(201,149,109,0.12)" : "none",
         }}>
           <div style={{
             display:       "flex",
@@ -238,7 +238,7 @@ export default function Navbar() {
               href="mailto:lolitoruiz65@gmail.com"
               onClick={() => setMenuOpen(false)}
               style={{
-                color:         "#D4AF37",
+                color:         "#C9956D",
                 fontSize:      12,
                 fontFamily:    "Inter, sans-serif",
                 fontWeight:    700,

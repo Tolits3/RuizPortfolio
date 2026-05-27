@@ -17,7 +17,7 @@ export default function CursorTrail() {
     let dotY   = -999;
 
     const particles = [];
-    const COLORS    = ["#D4AF37", "#FFDB58", "#FFC300", "#E8C547"];
+    const COLORS    = ["#C9956D", "#DEB896", "#D4A574", "#DEB896"];
 
     function onResize() {
       width  = canvas.width  = window.innerWidth;
@@ -114,10 +114,10 @@ export default function CursorTrail() {
           width: 12,
           height: 12,
           borderRadius: "50%",
-          background: "#D4AF37",
+          background: "#C9956D",
           zIndex: 9999,
           pointerEvents: "none",
-          boxShadow: "0 0 8px rgba(212,175,55,0.8), 0 0 20px rgba(212,175,55,0.3)",
+          boxShadow: "0 0 8px rgba(201,149,109,0.8), 0 0 20px rgba(201,149,109,0.3)",
           transition: "width 0.15s, height 0.15s, background 0.15s",
           willChange: "transform",
         }}

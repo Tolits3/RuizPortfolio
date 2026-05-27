@@ -3,6 +3,7 @@ import ShaderBg from "./components/ShaderBg";
 import CursorTrail from "./components/CursorTrail";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
+import Experience from "./components/Experience";
 import About from "./components/About";
 import SparklesLayer from "./components/SparklesLayer";
 import Footer from "./components/Footer";
@@ -20,6 +21,7 @@ export default function App(){
       <main>
         <Hero />
         <Projects />
+        <Experience />
         <About />
       </main>
 
